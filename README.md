@@ -55,7 +55,7 @@ netlify deploy --prod --dir .
 
 ## About the logo
 
-`assets/fau-logo.svg` is a simple owl emblem in FAU colors. To use the official FAU logo, save it over `assets/fau-logo.svg`. If your file is a PNG, save it as `assets/fau-logo.png` and change the `src` in `index.html` to match. Official marks are available from FAU's brand guidelines site. They are trademarks of Florida Atlantic University.
+`assets/fau-logo.svg` is a custom owl badge in FAU red and blue, with a sun and a cloud for the weather theme. The browser tab icon (`favicon.svg`) is the same design. To use the official FAU logo, save it over `assets/fau-logo.svg`. If your file is a PNG, save it as `assets/fau-logo.png` and change the `src` in `index.html` to match. Official marks are available from FAU's brand guidelines site. They are trademarks of Florida Atlantic University.
 
 ## Credits
 
