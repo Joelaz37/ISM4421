@@ -8,6 +8,7 @@
   <meta name="theme-color" content="#003366">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="styles.css">
+  <script src="theme.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -19,14 +20,30 @@
           <span class="brand-sub">Florida Atlantic University</span>
         </span>
       </a>
-      <div class="unit-toggle" role="group" aria-label="Temperature units">
-        <button type="button" data-unit="fahrenheit" aria-pressed="true">°F</button>
-        <button type="button" data-unit="celsius" aria-pressed="false">°C</button>
+      <div class="header-controls">
+        <label class="theme-picker">
+          <span class="visually-hidden">Theme</span>
+          <select id="theme-select" title="Theme">
+            <option value="system">🖥️ System</option>
+            <option value="light">🌤️ Light</option>
+            <option value="white">⚪ White</option>
+            <option value="dark">🌙 Dark</option>
+          </select>
+        </label>
+        <div class="unit-toggle" role="group" aria-label="Temperature units">
+          <button type="button" data-unit="fahrenheit" aria-pressed="true">°F</button>
+          <button type="button" data-unit="celsius" aria-pressed="false">°C</button>
+        </div>
       </div>
     </div>
   </header>
 
   <main class="container">
+    <section class="welcome" aria-labelledby="welcome-title">
+      <h1 id="welcome-title" class="welcome-title">Welcome, Joe Lozoraitis! 🦉</h1>
+      <p id="welcome-text" class="welcome-text">Here's your forecast from FAU Owl Weather. Go Owls!</p>
+    </section>
+
     <section class="search-bar" aria-label="Search location">
       <form id="search-form" autocomplete="off" role="search">
         <label for="search-input" class="visually-hidden">Search for a city</label>
@@ -44,7 +61,7 @@
     <section id="current" class="card current" aria-labelledby="location-name" hidden>
       <div class="current-main">
         <div>
-          <h1 id="location-name" class="location-name">Boca Raton</h1>
+          <h2 id="location-name" class="location-name">Boca Raton</h2>
           <p id="location-detail" class="location-detail"></p>
           <p id="updated" class="updated"></p>
         </div>

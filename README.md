@@ -11,14 +11,17 @@ A weather app with Florida Atlantic University branding. It uses the free [Open-
 - 📍 **My location** button, which uses browser geolocation
 - 🦉 **Boca** button to jump back to campus
 - °F / °C toggle. The app remembers your unit and last location in the browser.
-- Works on phones, supports dark mode, and uses the FAU colors: blue `#003366`, red `#CC0000` and gray `#CCCCCC`
+- Four themes (System, Light, White, Dark) picked from the header. System follows your device setting.
+- Personalized welcome message for Joe Lozoraitis that changes with the time of day
+- Works on phones and uses the FAU colors: blue `#003366`, red `#CC0000` and gray `#CCCCCC`
 
 ## Project structure
 
 ```
 index.html          Page markup
 styles.css          FAU-themed styles
-app.js              Open-Meteo API calls and rendering (plain JavaScript)
+app.js              Open-Meteo API calls, rendering and welcome message (plain JavaScript)
+theme.js            Theme switcher: System, Light, White, Dark
 assets/fau-logo.svg Logo shown in the header
 favicon.svg         Browser tab icon
 netlify.toml        Netlify deploy config (publish dir, security headers)

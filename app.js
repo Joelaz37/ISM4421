@@ -358,6 +358,22 @@
     });
   });
 
+  // --- Theme picker -----------------------------------------------------------
+  const themeSelect = $("theme-select");
+  if (themeSelect && window.FAUTheme) {
+    themeSelect.value = window.FAUTheme.current();
+    themeSelect.addEventListener("change", () => window.FAUTheme.set(themeSelect.value));
+  }
+
+  // --- Welcome message -------------------------------------------------------
+  function greet() {
+    const hour = new Date().getHours();
+    const part = hour < 5 ? "Burning the midnight oil" : hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
+    $("welcome-title").textContent = `${part}, Joe Lozoraitis! 🦉`;
+    $("welcome-text").textContent = `Welcome back to FAU Owl Weather. It's ${new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric" }).format(new Date())}. Go Owls!`;
+  }
+
+  greet();
   syncUnitButtons();
   loadWeather(state.location);
 })();
