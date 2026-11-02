@@ -12,7 +12,7 @@ A weather app with Florida Atlantic University branding. It uses the free [Open-
 - 🦉 **Boca** button to jump back to campus
 - °F / °C toggle. The app remembers your unit and last location in the browser.
 - Four themes (System, Light, White, Dark) picked from the header. System follows your device setting.
-- Personalized welcome message for Joe Lozoraitis that changes with the time of day
+- **Continue with Google** sign-in (Supabase Auth). After login the header shows the person's name and profile picture from `user_metadata`, and the welcome message greets them by name, changing with the time of day
 - Works on phones and uses the FAU colors: blue `#003366`, red `#CC0000` and gray `#CCCCCC`
 
 ## Project structure
@@ -21,13 +21,24 @@ A weather app with Florida Atlantic University branding. It uses the free [Open-
 index.html          Page markup
 styles.css          FAU-themed styles
 app.js              Open-Meteo API calls, rendering and welcome message (plain JavaScript)
+auth.js             Google sign-in with Supabase, name and profile picture in the header
+vendor/             Bundled Supabase client library (so no CDN is needed)
 theme.js            Theme switcher: System, Light, White, Dark
 assets/fau-logo.svg Logo shown in the header
 favicon.svg         Browser tab icon
 netlify.toml        Netlify deploy config (publish dir, security headers)
 ```
 
-There is no build step and there are no dependencies. It's a plain static site.
+There is no build step and nothing to install. It's a plain static site.
+
+## Sign in with Google
+
+The app uses Supabase project `New` (`bgcpvsdafecjvtqkjnmy`). One-time setup:
+1. Supabase Dashboard → Authentication → Sign In / Providers → **Google**: enabled, with your Google OAuth client ID and secret.
+2. Google Cloud Console → your OAuth client → Authorized redirect URIs: `https://bgcpvsdafecjvtqkjnmy.supabase.co/auth/v1/callback`
+3. Supabase Dashboard → Authentication → URL Configuration: set **Site URL** to your Netlify URL and add `https://YOUR-SITE.netlify.app/**` to **Redirect URLs** (add `http://localhost:8000/**` too for local testing). Otherwise Google sends people back to `localhost:3000`.
+
+`netlify.toml`'s Content-Security-Policy allows the Supabase project and Google profile photos (`*.googleusercontent.com`).
 
 ## Run locally
 

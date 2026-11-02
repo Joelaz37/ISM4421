@@ -366,14 +366,22 @@
   }
 
   // --- Welcome message -------------------------------------------------------
+  let userName = "";
   function greet() {
     const hour = new Date().getHours();
     const part = hour < 5 ? "Burning the midnight oil" : hour < 12 ? "Good morning" : hour < 17 ? "Good afternoon" : "Good evening";
-    $("welcome-title").textContent = `${part}, Joe Lozoraitis! 🦉`;
+    $("welcome-title").textContent = userName ? `${part}, ${userName}! 🦉` : `${part}! 🦉`;
     $("welcome-text").textContent = `Welcome back to FAU Owl Weather. It's ${new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric" }).format(new Date())}. Go Owls!`;
   }
 
-  greet();
-  syncUnitButtons();
-  loadWeather(state.location);
+  // Runs once the person has signed in (see auth.js).
+  let started = false;
+  window.startWeatherApp = (name) => {
+    userName = name || "";
+    greet();
+    if (started) return;
+    started = true;
+    syncUnitButtons();
+    loadWeather(state.location);
+  };
 })();
